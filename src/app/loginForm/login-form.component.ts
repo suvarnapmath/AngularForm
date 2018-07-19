@@ -1,6 +1,7 @@
 import { Component,Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import { NG_VALIDATORS,Validator,Validators,AbstractControl,ValidatorFn } from '@angular/forms';
 import { User }    from './user';
+import { Router } from '@angular/router';
 @Component({
   moduleId: module.id,
   selector: 'login-form',
@@ -8,12 +9,14 @@ import { User }    from './user';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
-  powers = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
-  model = new User('','',null,'','','');
-  submitted = false;
-  onSubmit() { this.submitted = true; }
-  newHero() {
-   // this.model = new User('','');
+  constructor(private router:Router){
+
   }
+
+  model = new User('','');
+  
+  onSubmit() { 
+    this.router.navigate(['dashboard']);
+   }
+  
 }
